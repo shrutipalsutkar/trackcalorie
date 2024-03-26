@@ -24,6 +24,20 @@ class CalorieTracker {
     Storage.saveMeal(meal);
     this._displayNewMeal(meal);
     this._render();
+
+    // New code to capture additional meal data
+    const mealName = document.getElementById('meal-name').value;
+    const mealCalories = parseInt(document.getElementById('meal-calories').value);
+    const bloodSugarBefore = parseInt(document.getElementById('blood-sugar-before').value);
+    const bloodSugarAfter = parseInt(document.getElementById('blood-sugar-after').value);
+    const insulinDose = parseInt(document.getElementById('insulin-dose').value);
+    const carbsConsumed = parseInt(document.getElementById('carbs-consumed').value);
+
+    // Create a new Meal object with the additional fields
+    const meal = new Meal(mealName, mealCalories, bloodSugarBefore, bloodSugarAfter, insulinDose, carbsConsumed);
+
+    // Save the meal
+    Storage.saveMeal(meal);
   }
 
   addWorkout(workout) {
